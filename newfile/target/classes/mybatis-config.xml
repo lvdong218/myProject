@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <properties resource="jdbc.properties"></properties>
+
+    <settings>
+        <!-- 开启驼峰匹配：经典的数据库列名（多个单词下划线连接）映射到经典的java属性名（多个单词驼峰连接） -->
+        <setting name="mapUnderscoreToCamelCase" value="true" />
+        <!-- 延迟加载的全局开关。当开启时，所有关联对象都会延迟加载。特定关联关系中可通过设置fetchType属性来覆盖该项的开关状态 -->
+        <setting name="lazyLoadingEnabled" value="true" />
+        <!-- 当启用时，带有延迟加载属性的对象的加载与否完全取决于对任意延迟属性的调用；反之，每种属性将会按需加载 -->
+        <setting name="aggressiveLazyLoading" value="false" />
+
+    </settings>
+    <typeAliases>
+        <!-- 类型别名：type-pojo类的全路径，alias-别名名称（可随便写，推荐和类名一致） -->
+        <!-- <typeAlias type="cn.itcast.mybatis.pojo.User" alias="user" /> -->
+        <!-- 开启别名包扫描，name：包路径，扫描的别名就是类名，并且大小写不敏感 扫描的是实体类型 -->
+        <package name="cn.jaden.pojo" />
+
+    </typeAliases>
+
+    <plugins>
+        <!-- com.github.pagehelper为PageHelper类所在包名 -->
+        <plugin interceptor="com.github.pagehelper.PageHelper">
+            <!-- 数据库方言 -->
+            <property name="dialect" value="mysql"/>
+            <!-- 设置为true时，使用RowBounds分页会进行count查询 会去查询出总数 -->
+            <property name="rowBoundsWithCount" value="true"/>
+        </plugin>
+    </plugins>
+
+    <!-- 环境：说明可以配置多个，default:指定生效的环境 -->
+    <environments default="development">
+        <!-- id:环境的唯一标识 -->
+        <environment id="development">
+            <!-- 事务管理器，type：类型 -->
+            <transactionManager type="JDBC" />
+            <!-- 数据源：type-池类型的数据源 -->
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driverClassname}" />
+                <property name="url" value="${jdbc.url}" />
+                <property name="username" value="${jdbc.username}" />
+                <property name="password" value="${jdbc.password}" />
+            </dataSource>
+        </environment>
+    </environments>
+    <!-- 映射文件 -->
+    <mappers>
+<!--         <mapper resource="commSQL.xml" /> -->
+        <!-- <mapper resource="UserMapper.xml"/> -->
+        <!-- 扫描的是mapper 映射文件 -->
+        <package name="com.*..mapper.*" />
+    </mappers>
+</configuration>
