@@ -15,24 +15,6 @@ public class TestUtils {
 		param.put("param2", 2);
 		String resultStr=param.toString();
 		JSONObject json=JSONObject.fromObject(resultStr);
-		System.out.println(json);
-//		Mytask mytask=new Mytask(1000,"第一个");
-//		Mytask mytask1=new Mytask(1000,"第二个");
-//		Mytask mytask2=new Mytask(0,"第三个");
-//		Mytask mytask3=new Mytask(0,"第四个");
-//		Mytask mytask4=new Mytask(0,"第五个");
-//		Mytask mytask5=new Mytask(0,"第六个");
-//		Mytask mytask6=new Mytask(0,"第Ⅶ个");
-//		Mytask mytask7=new Mytask(0,"第Ⅷ个");
-//		ScheduledThreadPoolExecutor pool=new ScheduledThreadPoolExecutor(5);
-//		ThreadPoolUtils.setPool(pool);
-//		ThreadPoolUtils.schedule(mytask);
-//		ThreadPoolUtils.schedule(mytask1);
-//		ThreadPoolUtils.schedule(mytask2);
-//		ThreadPoolUtils.schedule(mytask3);
-//		ThreadPoolUtils.schedule(mytask4);
-//		ThreadPoolUtils.schedule(mytask5);
-//		ThreadPoolUtils.schedule(mytask6);
 	}
 	public static void main(String[] args) {
 		Mytask mytask=new Mytask(1000,"第一个");
