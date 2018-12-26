@@ -13,5 +13,7 @@ import com.ld.login.Bean.User;
 @Repository("loginDao")
 public interface LoginDao {
 	public User queryByInfo(Map map);
+	public User queryByInfo(User user);
 	public User queryByName(Map map);
+
 }

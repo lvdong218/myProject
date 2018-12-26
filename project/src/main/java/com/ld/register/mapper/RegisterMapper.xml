@@ -2,7 +2,7 @@
 <!DOCTYPE mapper  
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
-<mapper namespace="com.ld.register.dao.UserDao">
+<mapper namespace="com.ld.register.dao.RegisterDao">
 	<insert id="insert" parameterType="com.ld.register.bean.User">
 		insert into base_user(name,password,sex,phone,email) values(#{name},#{password},#{sex},#{phone},#{email})
 	</insert>

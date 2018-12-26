@@ -1,26 +1,24 @@
 package com.ld.register.action;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-
 import com.ld.filter.until.CheckUtils;
 import com.ld.filter.until.MailUtils;
 import com.ld.filter.until.RedisUtils;
 import com.ld.register.bean.User;
-import com.ld.register.service.UserService;
+import com.ld.register.service.RegisterService;
 import com.ld.util.ResponseUtil;
-
 import net.sf.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @Controller
 @RequestMapping("user")
-public class UserController {
+public class RegisterController {
 	@Autowired
-	private UserService uService;
+	private RegisterService registerService;
 	@RequestMapping("regiter")
 	public void regiter(User user,HttpServletResponse response,HttpServletRequest request) {
 //		String str=checkUserInfo(user,request.getSession().getAttribute("activateCode")!=null?request.getSession().getAttribute("activateCode").toString():"");
@@ -40,7 +38,7 @@ public class UserController {
 			ResponseUtil.outputJson(request, response,json);
 			return;
 		}
-		uService.insert(user);
+		registerService.insert(user);
 		JSONObject json=new JSONObject();
 		json.put("flag", true);
 		ResponseUtil.outputJson(request, response,json);
